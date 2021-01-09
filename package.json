@@ -113,11 +113,13 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^17.3.0",
     "sequelize": "^6.3.5",
-    "typed-validators": "^3.0.0"
+    "typed-validators": "^3.1.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "lodash": "^4.17.20",
     "sequelize-validate-subfields": "^1.1.1"
+  },
+  "peerDependencies": {
+    "typed-validators": "^3.1.0"
   }
 }
