@@ -23,10 +23,16 @@ export function* convertValidationErrors(
   validation: Validation,
   options: ConvertOptions = {}
 ): Iterable<FieldValidation> {
-  for (let [path, message, type] of validation.errors) {
-    if (options.reduxFormStyle && type.acceptsSomeCompositeTypes) {
-      yield { path: [...checkPath(path), '_error'], message }
-    } else yield { path: checkPath(path), message }
+  for (let error of validation.errors) {
+    if (
+      options.reduxFormStyle &&
+      error.expectedTypeAtPath.acceptsSomeCompositeTypes
+    ) {
+      yield {
+        path: [...checkPath(error.path), '_error'],
+        message: error.messageAtPath(),
+      }
+    } else yield { path: checkPath(error.path), message: error.messageAtPath() }
   }
 }
 
@@ -36,7 +42,9 @@ export function validateWithTypedValidators(
 ): (value: any) => void {
   return validateSubfields(function* (value: any): Iterable<FieldValidation> {
     const validation =
-      typeof type === 'function' ? type(value) : type.validate(value)
+      typeof type === 'function'
+        ? type(value)
+        : type.validate(value, undefined, [])
     if (validation) {
       yield* convertValidationErrors(validation, options)
     }

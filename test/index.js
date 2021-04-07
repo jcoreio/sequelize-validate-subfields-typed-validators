@@ -80,7 +80,11 @@ describe('validateWithTypedValidators', () => {
             path: ['address', 'postalCode'],
             message: 'must be a 4 or 5-digit postal code',
           },
-          { path: ['address'], message: 'must have property: state' },
+          {
+            path: ['address'],
+            message:
+              'is missing required property state, which must be NonEmptyString',
+          },
         ],
       })
     }
@@ -93,7 +97,13 @@ describe('validateWithTypedValidators', () => {
       throw new Error('expected an error to be thrown')
     } catch (error) {
       expect(error.validation).to.deep.equal({
-        errors: [{ path: ['address'], message: 'must be an object' }],
+        errors: [
+          {
+            path: ['address'],
+            message:
+              'must be of type:\n\n  {\n    line1: NonEmptyString\n    postalCode: PostalCode\n    state: NonEmptyString\n    line2?: NonEmptyString\n  }',
+          },
+        ],
       })
     }
   })
@@ -120,7 +130,11 @@ describe('validateWithTypedValidators', () => {
             path: ['address', 'postalCode'],
             message: 'must be a 4 or 5-digit postal code',
           },
-          { path: ['address', '_error'], message: 'must have property: state' },
+          {
+            path: ['address', '_error'],
+            message:
+              'is missing required property state, which must be NonEmptyString',
+          },
         ],
       })
     }
@@ -133,13 +147,19 @@ describe('validateWithTypedValidators', () => {
       throw new Error('expected an error to be thrown')
     } catch (error) {
       expect(error.validation).to.deep.equal({
-        errors: [{ path: ['address', '_error'], message: 'must be an object' }],
+        errors: [
+          {
+            path: ['address', '_error'],
+            message:
+              'must be of type:\n\n  {\n    line1: NonEmptyString\n    postalCode: PostalCode\n    state: NonEmptyString\n    line2?: NonEmptyString\n  }',
+          },
+        ],
       })
     }
   })
   it('works for validation function', () => {
     const validator = validateWithTypedValidators((user) =>
-      UserType.validate(user)
+      UserType.validate(user, undefined, [])
     )
 
     try {
@@ -160,7 +180,11 @@ describe('validateWithTypedValidators', () => {
             path: ['address', 'postalCode'],
             message: 'must be a 4 or 5-digit postal code',
           },
-          { path: ['address'], message: 'must have property: state' },
+          {
+            path: ['address'],
+            message:
+              'is missing required property state, which must be NonEmptyString',
+          },
         ],
       })
     }
@@ -173,7 +197,13 @@ describe('validateWithTypedValidators', () => {
       throw new Error('expected an error to be thrown')
     } catch (error) {
       expect(error.validation).to.deep.equal({
-        errors: [{ path: ['address'], message: 'must be an object' }],
+        errors: [
+          {
+            path: ['address'],
+            message:
+              'must be of type:\n\n  {\n    line1: NonEmptyString\n    postalCode: PostalCode\n    state: NonEmptyString\n    line2?: NonEmptyString\n  }',
+          },
+        ],
       })
     }
   })

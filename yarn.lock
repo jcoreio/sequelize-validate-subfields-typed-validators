@@ -8093,10 +8093,10 @@ type-fest@^0.8.0, type-fest@^0.8.1:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-typed-validators@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/typed-validators/-/typed-validators-3.1.0.tgz#479b6c28b2d3a68e959e504ca79714b635649794"
-  integrity sha512-ciip9MESVkNsaztsOZyeM3qXArDj89V6FfLeh1Qh/EMA0EGxu5j5c3sF4HySzj0AsjY/0qyNvYq5CypFsxDGxQ==
+typed-validators@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/typed-validators/-/typed-validators-4.1.2.tgz#021aefde6dfd2bc8c49ebadf2cae2c4fd46273b7"
+  integrity sha512-FodPTimsXwrpab6GaJb1alPP2mns5rS/AjaqjoI6g7MbgH6CrOMAWFaGdpWrWttCIH6HEMPLcaw06yKLiFf0gQ==
   dependencies:
     "@babel/runtime" "^7.1.5"
 
